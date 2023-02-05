@@ -23,7 +23,7 @@ public class swaggerSteps {
     PetExpectedBody petRequestBody;
     TagsInnerBody tagsInnerBody;
     public Response response;
-    HooksAPI hooksAPI;
+    HooksAPI hooksAPI=new HooksAPI();
 
     @Given("create the swagger api endpoint with the path parameter {string}")
     public void createTheSwaggerApiEndpointWithThePathParameter(String pathPar) {
@@ -31,23 +31,37 @@ public class swaggerSteps {
         spec.pathParam("pp1",pathPar);
     }
 
-    @And("save the response from the API")
-    public void saveTheResponseFromTheAPI() {
-         String[] photoUrl={"https://tr.pinterest.com/pin/679480662510500791/"};
-         Pet_Category petCategory=new Pet_Category(57,"Dog");
-
-         tagsInnerBody=new TagsInnerBody(23,"kangal");
-
-         TagsInnerBody[] tagsInnerBodies={tagsInnerBody};
-
-         petRequestBody=new PetExpectedBody(554,petCategory,"Kılıc",photoUrl,tagsInnerBodies,"available");
-         petExpectedBody=new PetExpectedBody(554,petCategory,"Kılıc",photoUrl,tagsInnerBodies,"available");
-         response=given().spec(spec).
-                  accept(ContentType.JSON).
-                  contentType(ContentType.JSON).
-                  when().body(petRequestBody).
-                  post("{pp1}");
+    @And("save the response from the {string} API")
+    public void saveTheResponseFromTheAPI(String apiName) {
+       if(apiName.equals("post-a-pet")){
+           String[] photoUrl={"https://tr.pinterest.com/pin/679480662510500791/"};
+           petCategory=new Pet_Category(57,"Dog");
+           tagsInnerBody=new TagsInnerBody(23,"kangal");
+           TagsInnerBody[] tagsInnerBodies={tagsInnerBody};
+           petRequestBody=new PetExpectedBody(554,petCategory,"Kılıc",photoUrl,tagsInnerBodies,"available");
+           petExpectedBody=new PetExpectedBody(554,petCategory,"Kılıc",photoUrl,tagsInnerBodies,"available");
+           response=given().spec(spec).
+                   accept(ContentType.JSON).
+                   contentType(ContentType.JSON).
+                   when().body(petRequestBody).
+                   post("{pp1}");
+       } else if (apiName.equals("update-a-pet")) {
+           String[] photoUrl={"https://tr.pinterest.com/pin/679480662510500791/"};
+           petCategory=new Pet_Category(57,"Dog");
+           tagsInnerBody=new TagsInnerBody(23,"Kangal");
+           TagsInnerBody[] tagsInnerBodies={tagsInnerBody};
+           petRequestBody=new PetExpectedBody(555,petCategory,"Sword of the wisdom",photoUrl,tagsInnerBodies,"available");
+           petExpectedBody=new PetExpectedBody(555,petCategory,"Sword of the wisdom",photoUrl,tagsInnerBodies,"available");
+           response=given().spec(spec).
+                   accept(ContentType.JSON).
+                   contentType(ContentType.JSON).
+                   when().body(petRequestBody).
+                   put("{pp1}");
+           
+       }
     }
+
+  
 
     @Then("verify that the expected response and the actual response are the same as each other")
     public void verifyThatTheExpectedResponseAndTheActualResponseAreTheSameAsEachOther() {
@@ -60,4 +74,6 @@ public class swaggerSteps {
         assertEquals(petExpectedBody.getTags()[0].getName(),petRequestBody.getTags()[0].getName());
         assertEquals(petExpectedBody.getStatus(),petRequestBody.getStatus());
     }
+
+   
 }

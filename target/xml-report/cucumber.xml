@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="7.748">
-    <testcase classname="pet store api testing" name="check if the post-a-pet api functions properly" time="7.056">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="6.298">
+    <testcase classname="pet store api testing" name="check if the post-a-pet api functions properly" time="4.809">
         <system-out><![CDATA[Given create the swagger api endpoint with the path parameter "pet".........passed
-And save the response from the API..........................................passed
+And save the response from the "post-a-pet" API.............................passed
+Then verify that the expected response and the actual response are the same as each other.passed
+]]></system-out>
+    </testcase>
+    <testcase classname="pet store api testing" name="check if the post-a-pet api functions properly 2" time="0.966">
+        <system-out><![CDATA[Given create the swagger api endpoint with the path parameter "pet".........passed
+And save the response from the "update-a-pet" API...........................passed
 Then verify that the expected response and the actual response are the same as each other.passed
 ]]></system-out>
     </testcase>
