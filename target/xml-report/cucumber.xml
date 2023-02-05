@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="6.298">
-    <testcase classname="pet store api testing" name="check if the post-a-pet api functions properly" time="4.809">
-        <system-out><![CDATA[Given create the swagger api endpoint with the path parameter "pet".........passed
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="3" time="9.056">
+    <testcase classname="pet store api testing" name="check if the post-a-pet api functions properly" time="4.813">
+        <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
 And save the response from the "post-a-pet" API.............................passed
-Then verify that the expected response and the actual response are the same as each other.passed
+Then verify the expected response and the actual response are the same as each other in "post-a-pet".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet store api testing" name="check if the post-a-pet api functions properly 2" time="0.966">
-        <system-out><![CDATA[Given create the swagger api endpoint with the path parameter "pet".........passed
+    <testcase classname="pet store api testing" name="check if the post-a-pet api functions properly 2" time="1.097">
+        <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
 And save the response from the "update-a-pet" API...........................passed
-Then verify that the expected response and the actual response are the same as each other.passed
+Then verify the expected response and the actual response are the same as each other in "update-a-pet".passed
+]]></system-out>
+    </testcase>
+    <testcase classname="pet store api testing" name="check if the post-a-pet api functions properly 3" time="2.716">
+        <system-out><![CDATA[Given create the endpoint with the "pet" ,"findByStatus" and "available"....passed
+And save the response from the "finds-by-status" API........................passed
+Then verify the expected response and the actual response are the same as each other in "finds-by-status".passed
 ]]></system-out>
     </testcase>
 </testsuite>
