@@ -6,14 +6,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.hamcrest.Matcher;
-import org.hamcrest.Matchers;
 import org.junit.Assert;
 import pojos.PetPost.PetExpectedBody;
 import pojos.PetPost.Pet_Category;
 import pojos.PetPost.TagsInnerBody;
 
-import java.util.Collections;
 import java.util.List;
 
 import static hooks.api.HooksAPI.spec;
@@ -97,7 +94,9 @@ public class swaggerSteps {
         }
         if (apiNme.equals("finds-by-status")){
             response.then().assertThat().statusCode(200).
-                    body("name",hasItem("Sword of the wisdom"),"status",hasItem("available"));
+                   body("name",hasItem("Sword of the wisdom"),"status",hasItem("available"));
+
+
         }
     }
 }
