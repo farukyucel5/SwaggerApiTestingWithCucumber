@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="3" time="7.623">
-    <testcase classname="pet store api testing" name="check if the post-a-pet api functions properly" time="4.982">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="4" time="10.045">
+    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly" time="4.916">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
 And save the response from the "post-a-pet" API.............................passed
 Then verify the expected response and the actual response are the same as each other in "post-a-pet".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet store api testing" name="check if the post-a-pet api functions properly 2" time="0.938">
+    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly 2" time="0.965">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
 And save the response from the "update-a-pet" API...........................passed
 Then verify the expected response and the actual response are the same as each other in "update-a-pet".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet store api testing" name="check if the post-a-pet api functions properly 3" time="1.231">
-        <failure message="Cannot invoke &quot;pojos.PetPost.GetPetByStatus.getPets()&quot; because &quot;this.petByStatus&quot; is null" type="java.lang.NullPointerException"><![CDATA[Given create the endpoint with the "pet" ,"findByStatus" and "available"....passed
+    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly 3" time="2.644">
+        <system-out><![CDATA[Given create the endpoint with the "pet" ,"findByStatus" and "available"....passed
 And save the response from the "finds-by-status" API........................passed
-Then verify the expected response and the actual response are the same as each other in "finds-by-status".failed
-
-StackTrace:
-java.lang.NullPointerException: Cannot invoke "pojos.PetPost.GetPetByStatus.getPets()" because "this.petByStatus" is null
-	at stepDefinitions.api.swaggerSteps.verifyTheExpectedResponseAndTheActualResponseAreTheSameAsEachOtherIn(swaggerSteps.java:104)
-	at ✽.verify the expected response and the actual response are the same as each other in "finds-by-status"(file:///C:/Asoftware/SwaggerApiTestingWithCucumberJava/src/test/resources/features/api/postPet.feature:7)
-]]></failure>
+Then verify the expected response and the actual response are the same as each other in "finds-by-status".passed
+]]></system-out>
+    </testcase>
+    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly 4" time="1.067">
+        <system-out><![CDATA[Given create the endpoint with the "pet" ,"555" and ""......................passed
+And save the response from the "getById" API................................passed
+Then verify the expected response and the actual response are the same as each other in "getById".passed
+]]></system-out>
     </testcase>
 </testsuite>

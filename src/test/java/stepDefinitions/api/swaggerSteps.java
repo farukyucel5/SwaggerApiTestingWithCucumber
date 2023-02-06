@@ -37,6 +37,9 @@ public class swaggerSteps {
         if (pathPar1.equals("pet")&&pathPar2.equals("findByStatus")) {
             spec.pathParams("pp1",pathPar1,"pp2",pathPar2).queryParam("status",query_par);
         }
+        if(pathPar1.equals("pet")&&pathPar2.equals("555")){
+            spec.pathParams("pp1",pathPar1,"pp2",pathPar2);
+        }
     }
 
     @And("save the response from the {string} API")
@@ -69,13 +72,14 @@ public class swaggerSteps {
                         put("{pp1}");
 
             }
-            case "finds-by-status" -> {
+            case "finds-by-status", "getById" -> {
                 response = given().
                         spec(spec).
                         accept(ContentType.JSON)
                         .when().
                         get("{pp1}/{pp2}");
             }
+
         }
     }
 
@@ -95,6 +99,22 @@ public class swaggerSteps {
         if (apiNme.equals("finds-by-status")){
             response.then().assertThat().statusCode(200).
                    body("name",hasItem("Sword of the wisdom"),"status",hasItem("available"));
+
+
+        }
+        if (apiNme.equals("getById")){
+            String[] photoUrl = {"https://tr.pinterest.com/pin/679480662510500791/"};
+            petCategory = new Pet_Category(57, "Dog");
+            tagsInnerBody = new TagsInnerBody(23, "Kangal");
+            TagsInnerBody[] tagsInnerBodies = {tagsInnerBody};
+            petExpectedBody = new PetExpectedBody(555, petCategory, "Sword of the wisdom", photoUrl, tagsInnerBodies, "available");
+            response.prettyPrint();
+            response.then().assertThat().statusCode(200).
+                    body("name",equalTo(petExpectedBody.getName()),
+                            "status",equalTo(petExpectedBody.getStatus()),
+                            "category.id",equalTo(petExpectedBody.getCategory().getId()),
+                            "category.name",equalTo(petExpectedBody.getCategory().getName()));
+
 
 
         }
