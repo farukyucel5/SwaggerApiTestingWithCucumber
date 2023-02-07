@@ -50,7 +50,7 @@ public class swaggerSteps {
     @And("save the response from the {string} API with data {string},{string},{string},{string},{string},{string},{string},{string}")
     public void saveTheResponseFromTheAPIWithData(String apiName,String name, String id, String categoryId, String categoryName, String tagId, String tagName, String photoUrl, String status) {
 
-        if (apiName.equals("post-a-pet")) {
+        if (apiName.equals("post-a-pet")||apiName.equals("update-a-pet")) {
             String[] photoUrl1 = {photoUrl};
             petCategory = new Pet_Category(Integer.parseInt(categoryId), categoryName);
             tagsInnerBody = new TagsInnerBody(Integer.parseInt(tagId), tagName);
@@ -70,7 +70,7 @@ public class swaggerSteps {
 
     @Then("verify the actual response and expected one with data {string}")
     public void verifyTheActualResponseAndExpectedOneWithData(String apiName) {
-        if (apiName.equals("post-a-pet")){
+        if (apiName.equals("post-a-pet")||apiName.equals("update-a-pet")){
             response.then().assertThat().body("id",lessThanOrEqualTo(2147483647),"id",greaterThanOrEqualTo(-2147483648));
             assertEquals(petExpectedBody.getId(),petRequestBody.getId());
             assertEquals(petExpectedBody.getCategory().getId(),petRequestBody.getCategory().getId());
