@@ -30,7 +30,7 @@ public class PetExpectedBody {
 }
      */
 
-    private int id;
+    private Long id;
 
     private Pet_Category category;
 

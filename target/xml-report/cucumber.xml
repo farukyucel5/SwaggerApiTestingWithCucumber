@@ -1,27 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="4" time="10.045">
-    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly" time="4.916">
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="4" time="9.272">
+    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly" time="5.704">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
-And save the response from the "post-a-pet" API.............................passed
-Then verify the expected response and the actual response are the same as each other in "post-a-pet".passed
+And save the response from the "post-a-pet" API with data "Sword","456","23","dog","25","Kangal","","sold".passed
+Then verify the actual response and expected one with data "post-a-pet".....passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly 2" time="0.965">
+    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly 2" time="1.06">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
-And save the response from the "update-a-pet" API...........................passed
-Then verify the expected response and the actual response are the same as each other in "update-a-pet".passed
+And save the response from the "post-a-pet" API with data "Honey","457","24","cat","33","british","","available".passed
+Then verify the actual response and expected one with data "post-a-pet".....passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly 3" time="2.644">
-        <system-out><![CDATA[Given create the endpoint with the "pet" ,"findByStatus" and "available"....passed
-And save the response from the "finds-by-status" API........................passed
-Then verify the expected response and the actual response are the same as each other in "finds-by-status".passed
+    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly 3" time="0.986">
+        <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
+And save the response from the "post-a-pet" API with data "DesertRose","212","25","camel1","45","Arabic1","","pending".passed
+Then verify the actual response and expected one with data "post-a-pet".....passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly 4" time="1.067">
-        <system-out><![CDATA[Given create the endpoint with the "pet" ,"555" and ""......................passed
-And save the response from the "getById" API................................passed
-Then verify the expected response and the actual response are the same as each other in "getById".passed
-]]></system-out>
+    <testcase classname="pet store api testing" name="check if  post-a-pet,update-a-pet,finds-by-status api functions properly 4" time="1.061">
+        <failure message="2 expectations failed.&#10;JSON path id doesn't match.&#10;Expected: a value less than or equal to &lt;2147483647&gt;&#10;  Actual: &lt;214748364700L&gt;&#10;&#10;JSON path id doesn't match.&#10;Expected: a value equal to or greater than &lt;-2147483648&gt;&#10;  Actual: &lt;214748364700L&gt;&#10;" type="java.lang.AssertionError"><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
+And save the response from the "post-a-pet" API with data "DesertRose","214748364700","25","camel2","45","Arabic2","","pending".passed
+Then verify the actual response and expected one with data "post-a-pet".....failed
+
+StackTrace:
+java.lang.AssertionError: 2 expectations failed.
+JSON path id doesn't match.
+Expected: a value less than or equal to <2147483647>
+  Actual: <214748364700L>
+
+JSON path id doesn't match.
+Expected: a value equal to or greater than <-2147483648>
+  Actual: <214748364700L>
+
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:67)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:484)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:72)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrapNoCoerce.callConstructor(ConstructorSite.java:105)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:59)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:499)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.validateResponseIfRequired(ResponseSpecificationImpl.groovy:684)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:193)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:61)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)
+	at io.restassured.internal.ResponseSpecificationImpl.body(ResponseSpecificationImpl.groovy:262)
+	at io.restassured.specification.ResponseSpecification$body$0.callCurrent(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.body(ResponseSpecificationImpl.groovy:109)
+	at io.restassured.internal.ValidatableResponseOptionsImpl.body(ValidatableResponseOptionsImpl.java:244)
+	at io.restassured.internal.ValidatableResponseImpl.super$2$body(ValidatableResponseImpl.groovy)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1268)
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.invokeMethodOnSuperN(ScriptBytecodeAdapter.java:144)
+	at io.restassured.internal.ValidatableResponseImpl.body(ValidatableResponseImpl.groovy:298)
+	at io.restassured.internal.ValidatableResponseImpl.body(ValidatableResponseImpl.groovy)
+	at stepDefinitions.api.swaggerSteps.verifyTheActualResponseAndExpectedOneWithData(swaggerSteps.java:75)
+	at ✽.verify the actual response and expected one with data "post-a-pet"(file:///C:/Asoftware/SwaggerApiTestingWithCucumberJava/src/test/resources/features/api/postPet.feature:7)
+]]></failure>
     </testcase>
 </testsuite>
