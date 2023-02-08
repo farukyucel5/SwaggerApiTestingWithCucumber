@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.bouncycastle.est.CACertsResponse;
+import org.hamcrest.Matchers;
 import org.junit.Assert;
 import pojos.PetPost.PetExpectedBody;
 import pojos.PetPost.Pet_Category;
@@ -38,7 +39,7 @@ public class swaggerSteps {
         if (pathPar1.equals("pet")&&pathPar2.equals("findByStatus")) {
             spec.pathParams("pp1",pathPar1,"pp2",pathPar2).queryParam("status",query_par);
         }
-        if(pathPar1.equals("pet")&&pathPar2.equals("555")){
+        if(pathPar1.equals("pet")&&query_par.equals("find-a-petById")){
             spec.pathParams("pp1",pathPar1,"pp2",pathPar2);
         }
     }
@@ -54,8 +55,8 @@ public class swaggerSteps {
             petCategory = new Pet_Category(Integer.parseInt(categoryId), categoryName);
             tagsInnerBody = new TagsInnerBody(Integer.parseInt(tagId), tagName);
             TagsInnerBody[] tagsInnerBodies = {tagsInnerBody};
-            petRequestBody = new PetExpectedBody(Long.parseLong(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
-            petExpectedBody=new PetExpectedBody(Long.parseLong(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
+            petRequestBody = new PetExpectedBody(Integer.parseInt(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
+            petExpectedBody=new PetExpectedBody(Integer.parseInt(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
             response = given().spec(spec).
                     accept(ContentType.JSON).
                     contentType(ContentType.JSON).
@@ -67,8 +68,8 @@ public class swaggerSteps {
             petCategory = new Pet_Category(Integer.parseInt(categoryId), categoryName);
             tagsInnerBody = new TagsInnerBody(Integer.parseInt(tagId), tagName);
             TagsInnerBody[] tagsInnerBodies = {tagsInnerBody};
-            petRequestBody = new PetExpectedBody(Long.parseLong(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
-            petExpectedBody=new PetExpectedBody(Long.parseLong(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
+            petRequestBody = new PetExpectedBody(Integer.parseInt(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
+            petExpectedBody=new PetExpectedBody(Integer.parseInt(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
             response = given().spec(spec).
                     accept(ContentType.JSON).
                     contentType(ContentType.JSON).
@@ -77,6 +78,15 @@ public class swaggerSteps {
 
         }
         if(apiName.equals("find-a-pet")){
+            response=given().spec(spec).accept(ContentType.JSON).when().get("{pp1}/{pp2}");
+
+        }
+        if (apiName.equals("find-a-petById")){
+            String[] photoUrl1 = {photoUrl};
+            petCategory = new Pet_Category(Integer.parseInt(categoryId), categoryName);
+            tagsInnerBody = new TagsInnerBody(Integer.parseInt(tagId), tagName);
+            TagsInnerBody[] tagsInnerBodies = {tagsInnerBody};
+            petExpectedBody=new PetExpectedBody(Integer.parseInt(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
             response=given().spec(spec).accept(ContentType.JSON).when().get("{pp1}/{pp2}");
 
         }
@@ -101,6 +111,12 @@ public class swaggerSteps {
         }
         if(apiName.equals("find-a-pet")){
             assertEquals(response.statusCode(),200);
+        }
+        if (apiName.equals("find-a-petById")){
+            assertEquals(response.statusCode(),200);
+            response.then().assertThat().body("id",Matchers.equalTo(petExpectedBody.getId()),
+                    "name",Matchers.equalTo(petExpectedBody.getName()));
+            response.prettyPrint();
         }
     }
 }
