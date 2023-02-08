@@ -4,7 +4,7 @@ Feature:pet api testing
   Scenario Outline:check if  post-a-pet and update-a-pet features function properly
     Given  create the endpoint with the "<path_param1>" ,"<path_param2>" and "<query_param>"
     And  save the response from the "<sectionName>" API with data "<name>","<id>","<categoryId>","<categoryName>","<tagId>","<tagName>","<photoUrl>","<status>"
-    Then verify the actual response and expected one with data "<sectionName>"
+    Then verify the actual response and expected one are the same in the "<sectionName>"
     Examples:
       |path_param1   |path_param2 | sectionName   |query_param|id           |categoryId|name       |categoryName |tagId|tagName |photoUrl|status     |
       |pet           |            |post-a-pet     |           |456          |23        |Sword      |dog          |25   |Kangal  |        | sold      |
@@ -15,7 +15,14 @@ Feature:pet api testing
       |pet           |            |update-a-pet   |           |457          |24        |Honey      |cat          |33   |british |        | sold      |
 
 
-
+  @Api
+  Scenario Outline:check if findsByStatus features function properly
+    Given  create the endpoint with the "<path_param1>" ,"<path_param2>" and "<query_param>"
+    And  save the response from the "<sectionName>" API with data "<name>","<id>","<categoryId>","<categoryName>","<tagId>","<tagName>","<photoUrl>","<status>"
+    Then verify the actual response and expected one are the same in the "<sectionName>"
+    Examples:
+      |path_param1   |path_param2  | sectionName   |query_param|id           |categoryId|name       |categoryName |tagId|tagName |photoUrl|status     |
+      |pet           |findByStatus |find-a-pet     |available  |             |          |           |             |     |        |        |           |
 
 
 

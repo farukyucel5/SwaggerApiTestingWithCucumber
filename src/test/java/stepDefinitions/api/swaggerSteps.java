@@ -18,8 +18,7 @@ import static hooks.api.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class swaggerSteps {
@@ -50,7 +49,7 @@ public class swaggerSteps {
     @And("save the response from the {string} API with data {string},{string},{string},{string},{string},{string},{string},{string}")
     public void saveTheResponseFromTheAPIWithData(String apiName,String name, String id, String categoryId, String categoryName, String tagId, String tagName, String photoUrl, String status) {
 
-        if (apiName.equals("post-a-pet")||apiName.equals("update-a-pet")) {
+        if (apiName.equals("post-a-pet")) {
             String[] photoUrl1 = {photoUrl};
             petCategory = new Pet_Category(Integer.parseInt(categoryId), categoryName);
             tagsInnerBody = new TagsInnerBody(Integer.parseInt(tagId), tagName);
@@ -63,13 +62,31 @@ public class swaggerSteps {
                     when().body(petRequestBody).
                     post("{pp1}");
         }
+        if(apiName.equals("update-a-pet")){
+            String[] photoUrl1 = {photoUrl};
+            petCategory = new Pet_Category(Integer.parseInt(categoryId), categoryName);
+            tagsInnerBody = new TagsInnerBody(Integer.parseInt(tagId), tagName);
+            TagsInnerBody[] tagsInnerBodies = {tagsInnerBody};
+            petRequestBody = new PetExpectedBody(Long.parseLong(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
+            petExpectedBody=new PetExpectedBody(Long.parseLong(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
+            response = given().spec(spec).
+                    accept(ContentType.JSON).
+                    contentType(ContentType.JSON).
+                    when().body(petRequestBody).
+                    put("{pp1}");
+
+        }
+        if(apiName.equals("find-a-pet")){
+            response=given().spec(spec).accept(ContentType.JSON).when().get("{pp1}/{pp2}");
+
+        }
 
 
 
     }
 
-    @Then("verify the actual response and expected one with data {string}")
-    public void verifyTheActualResponseAndExpectedOneWithData(String apiName) {
+    @Then("verify the actual response and expected one are the same in the {string}")
+    public void verifyTheActualResponseAndExpectedOneAreTheSameInThe(String apiName) {
         if (apiName.equals("post-a-pet")||apiName.equals("update-a-pet")){
             response.then().assertThat().body("id",lessThanOrEqualTo(2147483647),"id",greaterThanOrEqualTo(-2147483648));
             assertEquals(petExpectedBody.getId(),petRequestBody.getId());
@@ -82,6 +99,8 @@ public class swaggerSteps {
             assertEquals(petExpectedBody.getStatus(),petRequestBody.getStatus());
 
         }
-
+        if(apiName.equals("find-a-pet")){
+            assertEquals(response.statusCode(),200);
+        }
     }
 }
