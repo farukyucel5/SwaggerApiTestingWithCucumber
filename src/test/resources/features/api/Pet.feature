@@ -28,7 +28,16 @@ Feature:pet api testing
       |pet           |212          |find-a-petById     |find-a-petById |212          |25        |DesertRose |camel1       |45   |Arabic1 |        | pending   |
 
 
-
+  @Api
+  Scenario Template: Check if deletes-a-pet functions or not
+    Given  create the endpoint with the "<path_param1>" ,"<path_param2>" and "<query_param>"
+    And  save the response from the "<sectionName>" API with data "<name>","<id>","<categoryId>","<categoryName>","<tagId>","<tagName>","<photoUrl>","<status>"
+    Then verify the element is deleted
+    Examples:
+      | path_param1 | path_param2 | query_param |sectionName |
+      |pet          |456          |delete-a-pet |delete-a-pet|
+      |pet          |457          |delete-a-pet |delete-a-pet|
+      |pet          |212          |delete-a-pet |delete-a-pet|
 
 
 

@@ -42,6 +42,9 @@ public class swaggerSteps {
         if(pathPar1.equals("pet")&&query_par.equals("find-a-petById")){
             spec.pathParams("pp1",pathPar1,"pp2",pathPar2);
         }
+        if (query_par.equals("delete-a-pet")){
+            spec.pathParams("pp1",pathPar1,"pp2",pathPar2);
+        }
     }
 
 
@@ -90,6 +93,9 @@ public class swaggerSteps {
             response=given().spec(spec).accept(ContentType.JSON).when().get("{pp1}/{pp2}");
 
         }
+        if (apiName.equals("delete-a-pet")){
+            response=given().spec(spec).accept(ContentType.JSON).when().delete("{pp1}/{pp2}");
+        }
 
 
 
@@ -118,5 +124,11 @@ public class swaggerSteps {
                     "name",Matchers.equalTo(petExpectedBody.getName()));
             response.prettyPrint();
         }
+    }
+
+    @Then("verify the element is deleted")
+    public void verifyTheElementIsDeleted() {
+        response.prettyPrint();
+        response.then().assertThat().statusCode(200).body("id",Matchers.nullValue());
     }
 }
