@@ -1,6 +1,6 @@
 Feature:pet api testing
 
-  @Api
+  @Smoke
   Scenario Outline:check if  post-a-pet and update-a-pet features function properly
     Given  create the endpoint with the "<path_param1>" ,"<path_param2>" and "<query_param>"
     And  save the response from the "<sectionName>" API with data "<name>","<id>","<categoryId>","<categoryName>","<tagId>","<tagName>","<photoUrl>","<status>"
@@ -15,7 +15,7 @@ Feature:pet api testing
       |pet           |            |update-a-pet   |           |457          |24        |Honey      |cat          |33   |british |        | sold      |
 
 
-  @Api
+  @Smoke
   Scenario Outline:check if findsByStatus and findById features function properly
     Given  create the endpoint with the "<path_param1>" ,"<path_param2>" and "<query_param>"
     And  save the response from the "<sectionName>" API with data "<name>","<id>","<categoryId>","<categoryName>","<tagId>","<tagName>","<photoUrl>","<status>"
@@ -28,7 +28,7 @@ Feature:pet api testing
       |pet           |212          |find-a-petById     |find-a-petById |212          |25        |DesertRose |camel1       |45   |Arabic1 |        | pending   |
 
 
-  @Api
+  @Smoke
   Scenario Template: Check if deletes-a-pet functions or not
     Given  create the endpoint with the "<path_param1>" ,"<path_param2>" and "<query_param>"
     And  save the response from the "<sectionName>" API with data "<name>","<id>","<categoryId>","<categoryName>","<tagId>","<tagName>","<photoUrl>","<status>"
