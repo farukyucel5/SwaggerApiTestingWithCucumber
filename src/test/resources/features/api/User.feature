@@ -1,16 +1,4 @@
 Feature: Operations about user
-  #[
-  #{
-  #"id": 0,
-  #"username": "string",
-  #"firstName": "string",
-  #"lastName": "string",
-  #"email": "string",
-  #"password": "string",
-  #"phone": "string",
-  #"userStatus": 0
-  #}
-  #]
   @Smoke
   Scenario Template: Create user object with given input array
     Given create the endpoint with the "<path_param1>" ,"<path_param2>" and "<query_param>"
