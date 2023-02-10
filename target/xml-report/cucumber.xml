@@ -1,81 +1,111 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="13" time="20.046">
-    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly" time="7.603">
+<testsuite errors="0" failures="2" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="15" time="19.75">
+    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly" time="4.696">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
 And save the response from the "post-a-pet" API with data "Sword","456","23","dog","25","Kangal","","sold".passed
 Then verify the actual response and expected one are the same in the "post-a-pet".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly 2" time="1.017">
+    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly 2" time="0.947">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
 And save the response from the "post-a-pet" API with data "Honey","457","24","cat","33","british","","available".passed
 Then verify the actual response and expected one are the same in the "post-a-pet".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly 3" time="1.006">
+    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly 3" time="0.929">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
 And save the response from the "post-a-pet" API with data "DesertRose","212","25","camel1","45","Arabic1","","pending".passed
 Then verify the actual response and expected one are the same in the "post-a-pet".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly 4" time="0.958">
+    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly 4" time="0.926">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
 And save the response from the "post-a-pet" API with data "DesertRose","2147483647","25","camel2","45","Arabic2","","pending".passed
 Then verify the actual response and expected one are the same in the "post-a-pet".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly 5" time="0.993">
+    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly 5" time="0.952">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
 And save the response from the "update-a-pet" API with data "Kilic","456","5","dog","25","Kangal","","available".passed
 Then verify the actual response and expected one are the same in the "update-a-pet".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly 6" time="0.973">
+    <testcase classname="pet api testing" name="check if  post-a-pet and update-a-pet features function properly 6" time="0.921">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"" and "".........................passed
 And save the response from the "update-a-pet" API with data "Honey","457","24","cat","33","british","","sold".passed
 Then verify the actual response and expected one are the same in the "update-a-pet".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="check if findsByStatus and findById features function properly" time="1.117">
+    <testcase classname="pet api testing" name="check if findsByStatus and findById features function properly" time="1.125">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"findByStatus" and "available"....passed
 And save the response from the "find-a-pet" API with data "","","","","","","","".passed
 Then verify the actual response and expected one are the same in the "find-a-pet".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="check if findsByStatus and findById features function properly 2" time="0.998">
+    <testcase classname="pet api testing" name="check if findsByStatus and findById features function properly 2" time="2.002">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"456" and "find-a-petById"........passed
 And save the response from the "find-a-petById" API with data "Kilic","456","23","dog","25","Kangal","","sold".passed
 Then verify the actual response and expected one are the same in the "find-a-petById".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="check if findsByStatus and findById features function properly 3" time="0.942">
+    <testcase classname="pet api testing" name="check if findsByStatus and findById features function properly 3" time="0.962">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"457" and "find-a-petById"........passed
 And save the response from the "find-a-petById" API with data "Honey","457","24","cat","33","british","","available".passed
 Then verify the actual response and expected one are the same in the "find-a-petById".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="check if findsByStatus and findById features function properly 4" time="0.955">
+    <testcase classname="pet api testing" name="check if findsByStatus and findById features function properly 4" time="0.975">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"212" and "find-a-petById"........passed
 And save the response from the "find-a-petById" API with data "DesertRose","212","25","camel1","45","Arabic1","","pending".passed
 Then verify the actual response and expected one are the same in the "find-a-petById".passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="Check if deletes-a-pet functions or not" time="0.956">
+    <testcase classname="pet api testing" name="Check if deletes-a-pet functions or not" time="0.993">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"456" and "delete-a-pet"..........passed
 And save the response from the "delete-a-pet" API with data "<name>","<id>","<categoryId>","<categoryName>","<tagId>","<tagName>","<photoUrl>","<status>".passed
 Then verify the element is deleted..........................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="Check if deletes-a-pet functions or not 2" time="0.942">
+    <testcase classname="pet api testing" name="Check if deletes-a-pet functions or not 2" time="0.923">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"457" and "delete-a-pet"..........passed
 And save the response from the "delete-a-pet" API with data "<name>","<id>","<categoryId>","<categoryName>","<tagId>","<tagName>","<photoUrl>","<status>".passed
 Then verify the element is deleted..........................................passed
 ]]></system-out>
     </testcase>
-    <testcase classname="pet api testing" name="Check if deletes-a-pet functions or not 3" time="0.962">
+    <testcase classname="pet api testing" name="Check if deletes-a-pet functions or not 3" time="0.932">
         <system-out><![CDATA[Given create the endpoint with the "pet" ,"212" and "delete-a-pet"..........passed
 And save the response from the "delete-a-pet" API with data "<name>","<id>","<categoryId>","<categoryName>","<tagId>","<tagName>","<photoUrl>","<status>".passed
 Then verify the element is deleted..........................................passed
 ]]></system-out>
+    </testcase>
+    <testcase classname="Operations about user" name="Create user object with given input array" time="0.938">
+        <failure message="expected:&lt;200&gt; but was:&lt;500&gt;" type="java.lang.AssertionError"><![CDATA[Given create the endpoint with the "user" ,"createWithArray" and "".........passed
+And save the response from the "createUser" API with data "12","farukYucel","faruk","yucel","f@gmail.com","f123","07453245","1".passed
+Then verify the actual response and expected one are the same in the "createUser".failed
+
+StackTrace:
+java.lang.AssertionError: expected:<200> but was:<500>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at stepDefinitions.api.swaggerSteps.verifyTheActualResponseAndExpectedOneAreTheSameInThe(swaggerSteps.java:143)
+	at ✽.verify the actual response and expected one are the same in the "createUser"(file:///C:/Asoftware/SwaggerApiTestingWithCucumberJava/src/test/resources/features/api/User.feature:18)
+]]></failure>
+    </testcase>
+    <testcase classname="Operations about user" name="Create user object with given input array 2" time="0.935">
+        <failure message="expected:&lt;200&gt; but was:&lt;500&gt;" type="java.lang.AssertionError"><![CDATA[Given create the endpoint with the "user" ,"createWithArray" and "".........passed
+And save the response from the "createUser" API with data "13","harunYucel","harun","yucel","h@gmail.com","h123","002353245","0".passed
+Then verify the actual response and expected one are the same in the "createUser".failed
+
+StackTrace:
+java.lang.AssertionError: expected:<200> but was:<500>
+	at org.junit.Assert.fail(Assert.java:89)
+	at org.junit.Assert.failNotEquals(Assert.java:835)
+	at org.junit.Assert.assertEquals(Assert.java:647)
+	at org.junit.Assert.assertEquals(Assert.java:633)
+	at stepDefinitions.api.swaggerSteps.verifyTheActualResponseAndExpectedOneAreTheSameInThe(swaggerSteps.java:143)
+	at ✽.verify the actual response and expected one are the same in the "createUser"(file:///C:/Asoftware/SwaggerApiTestingWithCucumberJava/src/test/resources/features/api/User.feature:18)
+]]></failure>
     </testcase>
 </testsuite>

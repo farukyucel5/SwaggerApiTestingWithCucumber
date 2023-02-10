@@ -1,4 +1,4 @@
-package pojos.PetPost;
+package pojos.Pet;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Pet_Category {
-    /*
+
+public class PetExpectedBody {
+     /*
     {
   "id": 12,
   "category": {
@@ -28,8 +29,17 @@ public class Pet_Category {
   "status": "available"
 }
      */
+
     private int id;
+
+    private Pet_Category category;
+
     private String name;
 
+    private String[] photoUrls;
 
+    private TagsInnerBody[] tags;
+
+    private String status;
 }
+

@@ -1,23 +1,19 @@
 package stepDefinitions.api;
 
-import hooks.api.HooksAPI;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.bouncycastle.est.CACertsResponse;
 import org.hamcrest.Matchers;
-import org.junit.Assert;
-import pojos.PetPost.PetExpectedBody;
-import pojos.PetPost.Pet_Category;
-import pojos.PetPost.TagsInnerBody;
-
-import java.util.List;
+import pojos.Pet.PetExpectedBody;
+import pojos.Pet.Pet_Category;
+import pojos.Pet.TagsInnerBody;
+import pojos.User.ExpectedUserArray;
+import pojos.User.UserObject;
 
 import static hooks.api.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
@@ -29,7 +25,8 @@ public class swaggerSteps {
     PetExpectedBody petRequestBody;
     TagsInnerBody tagsInnerBody;
     public Response response;
-    HooksAPI hooksAPI=new HooksAPI();
+    ExpectedUserArray requestUser;
+    UserObject userObject;
 
     @Given("create the endpoint with the {string} ,{string} and {string}")
     public void createTheEndpointWithTheAnd(String pathPar1, String pathPar2, String query_par) {
@@ -45,21 +42,24 @@ public class swaggerSteps {
         if (query_par.equals("delete-a-pet")){
             spec.pathParams("pp1",pathPar1,"pp2",pathPar2);
         }
+        if (pathPar2.equals("createWithArray")){
+            spec.pathParams("pp1",pathPar1,"pp2",pathPar2);
+        }
     }
 
 
 
 
     @And("save the response from the {string} API with data {string},{string},{string},{string},{string},{string},{string},{string}")
-    public void saveTheResponseFromTheAPIWithData(String apiName,String name, String id, String categoryId, String categoryName, String tagId, String tagName, String photoUrl, String status) {
+    public void saveTheResponseFromTheAPIWithData(String apiName,String par1, String par2, String par3, String par4, String par5, String par6, String par7, String par8) {
 
         if (apiName.equals("post-a-pet")) {
-            String[] photoUrl1 = {photoUrl};
-            petCategory = new Pet_Category(Integer.parseInt(categoryId), categoryName);
-            tagsInnerBody = new TagsInnerBody(Integer.parseInt(tagId), tagName);
+            String[] photoUrl1 = {par7};
+            petCategory = new Pet_Category(Integer.parseInt(par3), par4);
+            tagsInnerBody = new TagsInnerBody(Integer.parseInt(par5), par6);
             TagsInnerBody[] tagsInnerBodies = {tagsInnerBody};
-            petRequestBody = new PetExpectedBody(Integer.parseInt(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
-            petExpectedBody=new PetExpectedBody(Integer.parseInt(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
+            petRequestBody = new PetExpectedBody(Integer.parseInt(par2), petCategory, par1, photoUrl1, tagsInnerBodies, par8);
+            petExpectedBody=new PetExpectedBody(Integer.parseInt(par2), petCategory, par1, photoUrl1, tagsInnerBodies, par8);
             response = given().spec(spec).
                     accept(ContentType.JSON).
                     contentType(ContentType.JSON).
@@ -67,12 +67,12 @@ public class swaggerSteps {
                     post("{pp1}");
         }
         if(apiName.equals("update-a-pet")){
-            String[] photoUrl1 = {photoUrl};
-            petCategory = new Pet_Category(Integer.parseInt(categoryId), categoryName);
-            tagsInnerBody = new TagsInnerBody(Integer.parseInt(tagId), tagName);
+            String[] photoUrl1 = {par7};
+            petCategory = new Pet_Category(Integer.parseInt(par3), par4);
+            tagsInnerBody = new TagsInnerBody(Integer.parseInt(par5), par6);
             TagsInnerBody[] tagsInnerBodies = {tagsInnerBody};
-            petRequestBody = new PetExpectedBody(Integer.parseInt(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
-            petExpectedBody=new PetExpectedBody(Integer.parseInt(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
+            petRequestBody = new PetExpectedBody(Integer.parseInt(par2), petCategory, par1, photoUrl1, tagsInnerBodies, par8);
+            petExpectedBody=new PetExpectedBody(Integer.parseInt(par2), petCategory, par1, photoUrl1, tagsInnerBodies, par8);
             response = given().spec(spec).
                     accept(ContentType.JSON).
                     contentType(ContentType.JSON).
@@ -85,16 +85,28 @@ public class swaggerSteps {
 
         }
         if (apiName.equals("find-a-petById")){
-            String[] photoUrl1 = {photoUrl};
-            petCategory = new Pet_Category(Integer.parseInt(categoryId), categoryName);
-            tagsInnerBody = new TagsInnerBody(Integer.parseInt(tagId), tagName);
+            String[] photoUrl1 = {par7};
+            petCategory = new Pet_Category(Integer.parseInt(par3), par4);
+            tagsInnerBody = new TagsInnerBody(Integer.parseInt(par5), par6);
             TagsInnerBody[] tagsInnerBodies = {tagsInnerBody};
-            petExpectedBody=new PetExpectedBody(Integer.parseInt(id), petCategory, name, photoUrl1, tagsInnerBodies, status);
+            petExpectedBody=new PetExpectedBody(Integer.parseInt(par2), petCategory, par1, photoUrl1, tagsInnerBodies, par8);
             response=given().spec(spec).accept(ContentType.JSON).when().get("{pp1}/{pp2}");
 
         }
         if (apiName.equals("delete-a-pet")){
             response=given().spec(spec).accept(ContentType.JSON).when().delete("{pp1}/{pp2}");
+        }
+
+        if (apiName.equals("createUser")){
+            userObject=new UserObject(Integer.parseInt(par1),par2,par3,par4,par5,par6,par7,Integer.parseInt(par8));
+            UserObject[] userArr={userObject};
+            requestUser=new ExpectedUserArray(userArr);
+            response = given().spec(spec).
+                    accept(ContentType.JSON).
+                    contentType(ContentType.JSON).
+                    when().body(requestUser).
+                    post("{pp1}/{pp2}");
+
         }
 
 
@@ -104,7 +116,8 @@ public class swaggerSteps {
     @Then("verify the actual response and expected one are the same in the {string}")
     public void verifyTheActualResponseAndExpectedOneAreTheSameInThe(String apiName) {
         if (apiName.equals("post-a-pet")||apiName.equals("update-a-pet")){
-            response.then().assertThat().body("id",lessThanOrEqualTo(2147483647),"id",greaterThanOrEqualTo(-2147483648));
+            petRequestBody=response.as(PetExpectedBody.class);
+            System.out.println(petRequestBody);
             assertEquals(petExpectedBody.getId(),petRequestBody.getId());
             assertEquals(petExpectedBody.getCategory().getId(),petRequestBody.getCategory().getId());
             assertEquals(petExpectedBody.getCategory().getName(),petRequestBody.getCategory().getName());
@@ -123,6 +136,12 @@ public class swaggerSteps {
             response.then().assertThat().body("id",Matchers.equalTo(petExpectedBody.getId()),
                     "name",Matchers.equalTo(petExpectedBody.getName()));
             response.prettyPrint();
+        }
+
+        if (apiName.equals("createUser")){
+            response.prettyPrint();
+            assertEquals(200,response.statusCode());
+
         }
     }
 
